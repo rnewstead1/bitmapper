@@ -155,13 +155,25 @@ describe "input_parser" do
 
     commands.length.should eql 2
     commands[1].should be_a Show_Command
-    end
+  end
 
   it "should handle Terminate command" do
     commands = @parser.parse("I 2 3\nX")
 
     commands.length.should eql 2
     commands[1].should be_a Terminate_Command
+  end
+
+  it "should handle Replace command" do
+    commands = @parser.parse("I 2 3\nR O C")
+
+    commands.length.should eql 2
+    commands[1].should be_a Replace_Command
+  end
+
+  it "should handle invalid Replace command" do
+    out = capture_io { @parser.parse("I 2 3\nR 1 2") }.join ''
+    out.should eql "Invalid input: [R 1 2]"
   end
 
 end

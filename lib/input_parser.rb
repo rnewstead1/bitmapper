@@ -7,6 +7,7 @@ class Input_Parser
     first_line_inputs = lines[0].split
     number_of_columns = first_line_inputs[1].to_i
     number_of_rows = first_line_inputs[2].to_i
+
     if first_line_inputs[0].eql?("I")
       lines.each do |line|
         input = line.split
@@ -77,6 +78,12 @@ class Input_Parser
           when "X"
             if line.eql? "X"
               commands.push(Terminate_Command.new)
+            else
+              errors.push("Invalid input: [#{ line }]")
+            end
+          when "R"
+            if line.match(/R [A-Z] [A-Z]/)
+              commands.push(Replace_Command.new(input[1], input[2]))
             else
               errors.push("Invalid input: [#{ line }]")
             end
