@@ -13,4 +13,8 @@ describe "bitmap" do
     Bitmap.new("I 2 1\nL 1 1 A").bitmap.should eql ["AO"]
   end
 
+  it "should set all pixels to white for command C" do
+    Bitmap.new("I 2 1\nL 1 1 A\nC").bitmap.should eql ["OO"]
+  end
+
 end
