@@ -2,7 +2,7 @@ class Horizontal_Segment_Command
 
   attr_reader :row, :first_column, :last_column, :colour
 
-  def initialize(row, first_column, last_column, colour)
+  def initialize(first_column, last_column, row, colour)
     @row = row
     @first_column = first_column
     @last_column = last_column

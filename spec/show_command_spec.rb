@@ -6,8 +6,7 @@ describe "show_command" do
     out = capture_io { bitmap = Show_Command.new.execute(["OO", "OO"])
     bitmap }.join ''
 
-    out.should eql "OO\nOO"
+    out.should eql "OO\nOO\n"
     bitmap.should eql ["OO", "OO"]
   end
-
 end

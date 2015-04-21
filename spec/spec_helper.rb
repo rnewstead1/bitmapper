@@ -7,6 +7,7 @@ require 'horizontal_segment_command'
 require 'fill_command'
 require 'show_command'
 require 'terminate_command'
+require 'bitmapper'
 
 require 'spec'
 require 'minitest/unit'
