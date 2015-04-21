@@ -16,8 +16,15 @@ describe "input_parser" do
   end
 
   it "should handle valid Create command" do
-    out = capture_io { @parser.parse("I 250 250") }.join ''
-    out.should eql "Bitmap created"
+    row_length = 250
+    number_of_rows = 248
+    commands = @parser.parse("I #{row_length} #{number_of_rows}")
+
+    commands.length.should eql 1
+    command = commands[0]
+    command.should be_a Create_Image_Command
+    command.row_length.should eql row_length
+    command.number_of_rows.should eql number_of_rows
   end
 
   it "should handle invalid Create command" do
@@ -36,13 +43,25 @@ describe "input_parser" do
   end
 
   it "should handle valid Clear command" do
-    out = capture_io { @parser.parse("I 2 3\nC") }.join ''
-    out.should eql "Bitmap created"
+    commands = @parser.parse("I 2 3\nC")
+
+    commands.size.should eql 2
+    command = commands[1]
+    command.should be_a Clear_Command
   end
 
   it "should handle valid Colour command" do
-    out = capture_io { @parser.parse("I 2 3\nL 1 1 V") }.join ''
-    out.should eql "Bitmap created"
+    x = 1
+    y = 2
+    colour = "V"
+    commands = @parser.parse("I 2 3\nL #{x} #{y} #{colour}")
+
+    commands.size.should eql 2
+    command = commands[1]
+    command.should be_a Colour_Command
+    command.x.should eql x
+    command.y.should eql y
+    command.colour.should eql colour
   end
 
   it "should handle invalid Colour command" do
@@ -56,8 +75,19 @@ describe "input_parser" do
   end
 
   it "should handle valid Vertical Segment command" do
-    out = capture_io { @parser.parse("I 2 3\nV 1 1 2 B") }.join ''
-    out.should eql "Bitmap created"
+    column = 1
+    first_row = 1
+    last_row = 2
+    colour = "B"
+    commands = @parser.parse("I 2 3\nV #{column} #{first_row} #{last_row} #{colour}")
+
+    commands.length.should eql 2
+    command = commands[1]
+    command.should be_a Vertical_Segment_Command
+    command.column.should eql column
+    command.first_row.should eql first_row
+    command.last_row.should eql last_row
+    command.colour.should eql colour
   end
 
   it "should handle invalid Vertical Segment command" do
