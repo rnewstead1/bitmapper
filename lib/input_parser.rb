@@ -1,5 +1,4 @@
 class Input_Parser
-  @@valid_number_range = /^([01][0-9][0-9]|2[0-4][0-9]|25[0-5])$/
 
   def parse(input_string)
     lines = input_string.split("\n")
@@ -19,7 +18,6 @@ class Input_Parser
       errors.push("Start of input is [#{ input_string }] but should be [I]")
     end
     if errors.empty?
-      Bitmap.new(input_string)
       print "Bitmap created"
     else
       print errors.join("\n")
@@ -30,17 +28,27 @@ class Input_Parser
     errors = Array.new
     case command
       when "I"
-        validate_syntax(errors, line, /I ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|250) ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|250)$/)
+        unless line.match(/I ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|250) ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|250)$/)
+          errors.push("Invalid input: [#{ line }]")
+        end
       when "C"
-        validate_syntax(errors, line, /C/)
+        unless line.match(/C/)
+          errors.push("Invalid input: [#{ line }]")
+        end
       when "L"
-        validate_syntax(errors, line, /L [0-9] [0-9] [A-Z]/)
+        unless line.match(/L [0-9] [0-9] [A-Z]/)
+          errors.push("Invalid input: [#{ line }]")
+        end
         input = line.split
         x = input[1].to_i
         y = input[2].to_i
-        validate_pixel_exists(errors, x, y, line, number_of_columns, number_of_rows)
+        if x > number_of_columns || y > number_of_rows
+          errors.push("Invalid input: [#{ line }]")
+        end
       when "V"
-        validate_syntax(errors, line, /V [0-9] [0-9] [0-9] [A-Z]/)
+        unless line.match(/V [0-9] [0-9] [0-9] [A-Z]/)
+          errors.push("Invalid input: [#{ line }]")
+        end
         input = line.split
         column = input[1].to_i
         first_row = input[2].to_i
@@ -52,19 +60,6 @@ class Input_Parser
         errors.push("Invalid input: [#{ line }]")
     end
     errors
-  end
-
-  def validate_pixel_exists(errors, x, y, line, number_of_columns, number_of_rows)
-    if x > number_of_columns || y > number_of_rows
-      errors.push("Invalid input: [#{ line }]")
-    end
-  end
-
-  def validate_syntax(errors, line, regexp)
-    if line.match(regexp)
-    else
-      errors.push("Invalid input: [#{ line }]")
-    end
   end
 
 end
