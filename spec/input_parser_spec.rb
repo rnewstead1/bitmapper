@@ -55,4 +55,21 @@ describe "input_parser" do
     out.should eql "Invalid input: [L 4 4 V]"
   end
 
+  it "should handle valid Vertical Segment command" do
+    out = capture_io { @parser.parse("I 2 3\nV 1 1 2 B") }.join ''
+    out.should eql "Bitmap created"
+  end
+
+  it "should handle invalid Vertical Segment command" do
+    out = capture_io { @parser.parse("I 2 3\nV F 1 2 B") }.join ''
+    out.should eql "Invalid input: [V F 1 2 B]"
+  end
+
+  it "should handle invalid Vertical Segment command where one of the pixels in the segment does not exist" do
+    out = capture_io { @parser.parse("I 2 3\nV 1 4 2 B") }.join ''
+    out.should eql "Invalid input: [V 1 4 2 B]"
+  end
+
+
+
 end

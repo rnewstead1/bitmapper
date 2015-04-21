@@ -35,17 +35,26 @@ class Input_Parser
         validate_syntax(errors, line, /C/)
       when "L"
         validate_syntax(errors, line, /L [0-9] [0-9] [A-Z]/)
-        validate_pixel_exists(errors, line, number_of_columns, number_of_rows)
+        input = line.split
+        x = input[1].to_i
+        y = input[2].to_i
+        validate_pixel_exists(errors, x, y, line, number_of_columns, number_of_rows)
+      when "V"
+        validate_syntax(errors, line, /V [0-9] [0-9] [0-9] [A-Z]/)
+        input = line.split
+        column = input[1].to_i
+        first_row = input[2].to_i
+        last_row = input[3].to_i
+        if column > number_of_columns || first_row > number_of_rows || last_row > number_of_rows
+          errors.push("Invalid input: [#{ line }]")
+        end
       else
         errors.push("Invalid input: [#{ line }]")
     end
     errors
   end
 
-  def validate_pixel_exists(errors, line, number_of_columns, number_of_rows)
-    input = line.split
-    x = input[1].to_i
-    y = input[2].to_i
+  def validate_pixel_exists(errors, x, y, line, number_of_columns, number_of_rows)
     if x > number_of_columns || y > number_of_rows
       errors.push("Invalid input: [#{ line }]")
     end
