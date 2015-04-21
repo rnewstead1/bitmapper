@@ -22,6 +22,8 @@ class Bitmap
           print @bitmap.join("\n")
         when "X"
           @bitmap = []
+        else
+          print "[#{ input_string }] is not a valid input"
       end
     end
   end

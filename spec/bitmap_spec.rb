@@ -42,5 +42,9 @@ describe "bitmap" do
     Bitmap.new("I 3 4\nH 1 1 2 D\nF 2 3 C\nX").bitmap.should eql []
   end
 
+  it "should not crash with unknown command" do
+    out = capture_io{Bitmap.new("Invalid command")}.join ''
+    out.should eql "[Invalid command] is not a valid input"
+  end
 
 end
