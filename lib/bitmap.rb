@@ -3,7 +3,7 @@ class Bitmap
 
   def initialize(input_string)
     input_string.split("\n").each do |line|
-      input = line.split(" ")
+      input = line.split
       command = input[0]
       case command
         when "I"
@@ -21,7 +21,7 @@ class Bitmap
         when "S"
           print @bitmap.join("\n")
         when "X"
-          @bitmap = []
+          @bitmap = Array.new
         else
           print "[#{ input_string }] is not a valid input"
       end
@@ -31,7 +31,7 @@ class Bitmap
   private
 
   def create(row_length, number_of_rows)
-    @bitmap = []
+    @bitmap = Array.new
     (1..number_of_rows).each do |i|
       row = create_row(row_length, "O")
       @bitmap[i-1] = row
