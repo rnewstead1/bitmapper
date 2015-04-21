@@ -9,9 +9,13 @@ class Bitmap
         when "I"
           create(input[1].to_i, input[2].to_i)
         when "L"
-          colour(input[1].to_i, input[2].to_i, input[3])
-        else
+          replace_pixel(input[1].to_i, input[2].to_i, input[3])
+        when "C"
           clear
+        when "V"
+          vertical_segment(input[1].to_i, input[2].to_i, input[3].to_i, input[4])
+        when "H"
+          horizontal_segment(input[1].to_i, input[2].to_i, input[3].to_i, input[4])
       end
     end
   end
@@ -24,7 +28,6 @@ class Bitmap
       row = create_row(row_length, "O")
       @bitmap[i-1] = row
     end
-    @bitmap
   end
 
   def create_row(row_length, colour)
@@ -35,29 +38,27 @@ class Bitmap
     row
   end
 
-  def colour(x, y, colour)
+  def replace_pixel(x, y, colour)
     row = @bitmap[y-1]
-    update_row(row, row.sub(row[x-1], colour))
+    row[x-1] = colour
   end
 
   def clear
-    @bitmap.each do |row|
-      updated = create_row(row.length, "O")
-
-      update_row(row, updated)
-    end
-    @bitmap
+    @bitmap.map! { |row|
+      create_row(row.length, "O")
+    }
   end
 
-  def update_row(row_to_update, updated)
-    @bitmap.map! { |row|
-      if row.eql? row_to_update
-        updated
-      else
-        row
-      end
-    }
-    @bitmap
+  def vertical_segment(column, start_row, end_row, colour)
+    (start_row..end_row).each do |row|
+      replace_pixel(column, row, colour)
+    end
+  end
+
+  def horizontal_segment(row, start_column, end_column, colour)
+    (start_column..end_column).each do |column|
+      replace_pixel(column, row, colour)
+    end
   end
 
 end
