@@ -25,4 +25,13 @@ describe "bitmap" do
     Bitmap.new("I 3 3\nH 2 2 3 B").bitmap.should eql ["OOO", "OBB", "OOO"]
   end
 
+  it "should fill region R with colour C" do
+    Bitmap.new("I 3 4\nF 2 3 C").bitmap.should eql ["CCC", "CCC", "CCC", "CCC"]
+  end
+
+  it "should only fill surrounding pixels when they are the same colour as X, Y" do
+    Bitmap.new("I 3 4\nH 1 1 2 D\nF 2 3 C").bitmap.should eql ["DDC", "CCC", "CCC", "CCC"]
+  end
+
+
 end

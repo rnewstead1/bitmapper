@@ -16,6 +16,8 @@ class Bitmap
           vertical_segment(input[1].to_i, input[2].to_i, input[3].to_i, input[4])
         when "H"
           horizontal_segment(input[1].to_i, input[2].to_i, input[3].to_i, input[4])
+        when "F"
+          fill(input[1].to_i, input[2].to_i, input[3])
       end
     end
   end
@@ -59,6 +61,27 @@ class Bitmap
     (start_column..end_column).each do |column|
       replace_pixel(column, row, colour)
     end
+  end
+
+  def fill(x, y, colour)
+    initial_colour = colour(x, y)
+    inner(x, y, colour, initial_colour)
+  end
+
+  def inner(x, y, new_colour, initial_colour)
+    replace_pixel(x, y, new_colour)
+    surrounding = [[x-1, y], [x+1, y], [x, y-1], [x, y+1]]
+    surrounding.each do |x, y|
+      current_pixel_colour = colour(x, y)
+      if current_pixel_colour.eql? initial_colour
+        replace_pixel(x, y, new_colour)
+        inner(x, y, new_colour, initial_colour)
+      end
+    end
+  end
+
+  def colour(x, y)
+    @bitmap[y-1][x-1]
   end
 
 end
