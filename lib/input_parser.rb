@@ -46,6 +46,18 @@ class Input_Parser
             else
               errors.push("Invalid input: [#{ line }]")
             end
+          when "H"
+            row = input[1].to_i
+            first_column = input[2].to_i
+            last_column = input[3].to_i
+            if line.match(/H [0-9] [0-9] [0-9] [A-Z]/) &&
+                    row < number_of_rows &&
+                    first_column < number_of_columns &&
+                    last_column < number_of_columns
+              commands.push(Horizontal_Segment_Command.new(row, first_column, last_column, input[4]))
+            else
+              errors.push("Invalid input: [#{ line }]")
+            end
           else
             errors.push("Invalid input: [#{ line }]")
         end

@@ -100,6 +100,30 @@ describe "input_parser" do
     out.should eql "Invalid input: [V 1 4 2 B]"
   end
 
+  it "should handle valid Horizontal Segment command" do
+    row = 1
+    first_column = 1
+    last_column = 2
+    colour = "B"
+    commands = @parser.parse("I 3 3\nH #{row} #{first_column} #{last_column} #{colour}")
 
+    commands.length.should eql 2
+    command = commands[1]
+    command.should be_a Horizontal_Segment_Command
+    command.row.should eql row
+    command.first_column.should eql first_column
+    command.last_column.should eql last_column
+    command.colour.should eql colour
+  end
+
+  it "should handle invalid Horizontal Segment command" do
+    out = capture_io { @parser.parse("I 2 3\nH F 1 2 B") }.join ''
+    out.should eql "Invalid input: [H F 1 2 B]"
+  end
+
+  it "should handle invalid Horizontal Segment command where one of the pixels in the segment does not exist" do
+    out = capture_io { @parser.parse("I 2 3\nH 1 4 2 B") }.join ''
+    out.should eql "Invalid input: [H 1 4 2 B]"
+  end
 
 end

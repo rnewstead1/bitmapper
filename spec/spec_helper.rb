@@ -4,6 +4,7 @@ require 'create_image_command'
 require 'clear_command'
 require 'colour_command'
 require 'vertical_segment_command'
+require 'horizontal_segment_command'
 
 require 'spec'
 require 'minitest/unit'
