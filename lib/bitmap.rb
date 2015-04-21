@@ -38,7 +38,7 @@ class Bitmap
   end
 
   def fill(x, y, colour)
-    initial_colour = get_colour(x, y)
+    initial_colour = @bitmap[y-1][x-1]
     inner(x, y, colour, initial_colour)
     self
   end

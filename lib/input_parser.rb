@@ -58,6 +58,16 @@ class Input_Parser
             else
               errors.push("Invalid input: [#{ line }]")
             end
+          when "F"
+            x = input[1].to_i
+            y = input[2].to_i
+            if line.match(/F [0-9] [0-9] [A-Z]/) &&
+                    x < number_of_columns &&
+                    y < number_of_rows
+              commands.push(Fill_Command.new(x, y, input[3]))
+            else
+              errors.push("Invalid input: [#{ line }]")
+            end
           else
             errors.push("Invalid input: [#{ line }]")
         end

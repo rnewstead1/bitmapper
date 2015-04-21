@@ -126,4 +126,28 @@ describe "input_parser" do
     out.should eql "Invalid input: [H 1 4 2 B]"
   end
 
+  it "should handle valid Fill command" do
+    x = 1
+    y = 1
+    colour = "B"
+    commands = @parser.parse("I 3 3\nF #{x} #{y} #{colour}")
+
+    commands.length.should eql 2
+    command = commands[1]
+    command.should be_a Fill_Command
+    command.x.should eql x
+    command.y.should eql y
+    command.colour.should eql colour
+  end
+
+  it "should handle invalid Fill command" do
+    out = capture_io { @parser.parse("I 2 3\nF G 2 B") }.join ''
+    out.should eql "Invalid input: [F G 2 B]"
+  end
+
+  it "should handle invalid Horizontal Segment command where the specified pixel does not exist" do
+    out = capture_io { @parser.parse("I 2 3\nF 4 2 B") }.join ''
+    out.should eql "Invalid input: [F 4 2 B]"
+  end
+
 end
