@@ -1,4 +1,3 @@
-require 'bitmap'
 require 'input_parser'
 require 'create_image_command'
 require 'clear_command'
