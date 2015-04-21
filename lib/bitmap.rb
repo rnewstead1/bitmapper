@@ -18,6 +18,8 @@ class Bitmap
           horizontal_segment(input[1].to_i, input[2].to_i, input[3].to_i, input[4])
         when "F"
           fill(input[1].to_i, input[2].to_i, input[3])
+        when "S"
+          print @bitmap.join("\n")
       end
     end
   end

@@ -33,5 +33,10 @@ describe "bitmap" do
     Bitmap.new("I 3 4\nH 1 1 2 D\nF 2 3 C").bitmap.should eql ["DDC", "CCC", "CCC", "CCC"]
   end
 
+  it "should show the contents of the current image for the command S" do
+    out = capture_io{Bitmap.new("I 2 2\nS")}.join ''
+    out.should eql "OO\nOO"
+  end
+
 
 end
