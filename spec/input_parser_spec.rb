@@ -105,7 +105,7 @@ describe "input_parser" do
     first_column = 1
     last_column = 2
     colour = "B"
-    commands = @parser.parse("I 3 3\nH #{row} #{first_column} #{last_column} #{colour}")
+    commands = @parser.parse("I 3 3\nH #{first_column} #{last_column} #{row} #{colour}")
 
     commands.length.should eql 2
     command = commands[1]
