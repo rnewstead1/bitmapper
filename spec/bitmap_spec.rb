@@ -38,5 +38,9 @@ describe "bitmap" do
     out.should eql "OO\nOO"
   end
 
+  it "should terminate the session for command X" do
+    Bitmap.new("I 3 4\nH 1 1 2 D\nF 2 3 C\nX").bitmap.should eql []
+  end
+
 
 end
