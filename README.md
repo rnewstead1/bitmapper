@@ -7,8 +7,9 @@
 
 ## Usage
 
-To run the specs run 
-    `rake`
+Run the specs with `rake`
+
+`bitmapper.rb` parses an input file and will print output to the console.
     
 ## Features
 - `I M N` - Create a new M x N image with all pixels coloured white (O).
