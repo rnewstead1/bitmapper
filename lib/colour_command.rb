@@ -8,4 +8,10 @@ class Colour_Command
     @colour = colour
   end
 
+  def execute(bitmap)
+    row = bitmap[@y-1]
+    row[@x-1] = @colour
+    bitmap
+  end
+
 end

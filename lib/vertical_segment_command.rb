@@ -9,4 +9,12 @@ class Vertical_Segment_Command
     @colour = colour
   end
 
+  def execute(bitmap)
+    (@first_row..@last_row).each do |i|
+      row = bitmap[i-1]
+      row[@column-1] = @colour
+    end
+    bitmap
+  end
+
 end

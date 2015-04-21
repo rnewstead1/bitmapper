@@ -7,4 +7,16 @@ class Create_Image_Command
     @number_of_rows = number_of_rows
   end
 
+  def execute()
+    bitmap = Array.new
+    (1..@number_of_rows).each do |i|
+      row = ""
+      (1..@row_length).each do
+        row += "O"
+      end
+      bitmap[i-1] = row
+    end
+    bitmap
+  end
+
 end
