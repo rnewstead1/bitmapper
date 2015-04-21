@@ -9,4 +9,8 @@ describe "bitmap" do
     Bitmap.new("I 2 3").bitmap.should eql ["OO", "OO", "OO"]
   end
 
+  it "should colour pixel (X, Y) with colour C for command L" do
+    Bitmap.new("I 2 1\nL 1 1 A").bitmap.should eql ["AO"]
+  end
+
 end
