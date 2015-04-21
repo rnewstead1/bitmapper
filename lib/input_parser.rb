@@ -19,7 +19,7 @@ class Input_Parser
               errors.push("Invalid input: [#{ line }]")
             end
           when "C"
-            if line.match(/C/)
+            if line.eql? "C"
               commands.push(Clear_Command.new)
             else
               errors.push("Invalid input: [#{ line }]")
@@ -65,6 +65,12 @@ class Input_Parser
                     x < number_of_columns &&
                     y < number_of_rows
               commands.push(Fill_Command.new(x, y, input[3]))
+            else
+              errors.push("Invalid input: [#{ line }]")
+            end
+          when "S"
+            if line.eql? "S"
+              commands.push(Show_Command.new)
             else
               errors.push("Invalid input: [#{ line }]")
             end

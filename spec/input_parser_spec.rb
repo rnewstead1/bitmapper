@@ -150,4 +150,11 @@ describe "input_parser" do
     out.should eql "Invalid input: [F 4 2 B]"
   end
 
+  it "should handle Show command" do
+    commands = @parser.parse("I 2 3\nS")
+
+    commands.length.should eql 2
+    commands[1].should be_a Show_Command
+  end
+
 end
