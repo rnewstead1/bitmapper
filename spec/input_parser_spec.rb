@@ -155,6 +155,13 @@ describe "input_parser" do
 
     commands.length.should eql 2
     commands[1].should be_a Show_Command
+    end
+
+  it "should handle Terminate command" do
+    commands = @parser.parse("I 2 3\nX")
+
+    commands.length.should eql 2
+    commands[1].should be_a Terminate_Command
   end
 
 end

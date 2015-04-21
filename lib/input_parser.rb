@@ -74,6 +74,12 @@ class Input_Parser
             else
               errors.push("Invalid input: [#{ line }]")
             end
+          when "X"
+            if line.eql? "X"
+              commands.push(Terminate_Command.new)
+            else
+              errors.push("Invalid input: [#{ line }]")
+            end
           else
             errors.push("Invalid input: [#{ line }]")
         end

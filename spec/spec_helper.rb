@@ -7,6 +7,7 @@ require 'vertical_segment_command'
 require 'horizontal_segment_command'
 require 'fill_command'
 require 'show_command'
+require 'terminate_command'
 
 require 'spec'
 require 'minitest/unit'
