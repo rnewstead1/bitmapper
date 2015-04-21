@@ -1,0 +1,4 @@
+require 'bitmap'
+
+require 'spec'
+
