@@ -8,27 +8,27 @@ class Input_Parser
     number_of_columns = first_line_inputs[1].to_i
     number_of_rows = first_line_inputs[2].to_i
 
-    if first_line_inputs[0].eql?("I")
+    if first_line_inputs[0].eql?('I')
       lines.each do |line|
         command = line.split[0]
         case command
-          when "I"
+          when 'I'
             parse_create_command(commands, errors, line)
-          when "C"
+          when 'C'
             parse_clear_command(commands, errors, line)
-          when "L"
+          when 'L'
             parse_colour_command(commands, errors, line, number_of_columns, number_of_rows)
-          when "V"
+          when 'V'
             parse_vertical_segment_command(commands, errors, line, number_of_columns, number_of_rows)
-          when "H"
+          when 'H'
             parse_horizontal_segment_command(commands, errors, line, number_of_columns, number_of_rows)
-          when "F"
+          when 'F'
             parse_fill_command(commands, errors, line, number_of_columns, number_of_rows)
-          when "S"
+          when 'S'
             parse_show_command(commands, errors, line)
-          when "X"
+          when 'X'
             parse_terminate_command(commands, errors, line)
-          when "R"
+          when 'R'
             parse_replace_command(commands, errors, line)
           else
             errors.push("Invalid input: [#{ line }]")
@@ -54,7 +54,7 @@ class Input_Parser
   end
 
   def parse_terminate_command(commands, errors, line)
-    if line.eql? "X"
+    if line.eql? 'X'
       commands.push(Terminate_Command.new)
     else
       errors.push("Invalid input: [#{ line }]")
@@ -62,7 +62,7 @@ class Input_Parser
   end
 
   def parse_show_command(commands, errors, line)
-    if line.eql? "S"
+    if line.eql? 'S'
       commands.push(Show_Command.new)
     else
       errors.push("Invalid input: [#{ line }]")
@@ -126,7 +126,7 @@ class Input_Parser
   end
 
   def parse_clear_command(commands, errors, line)
-    if line.eql? "C"
+    if line.eql? 'C'
       commands.push(Clear_Command.new)
     else
       errors.push("Invalid input: [#{ line }]")

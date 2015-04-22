@@ -1,9 +1,9 @@
 class Clear_Command
   def execute(bitmap)
     bitmap.map! { |row|
-      row1 = ""
+      row1 = ''
       (1..row.length).each do
-        row1 += "O"
+        row1 += 'O'
       end
       row1
     }

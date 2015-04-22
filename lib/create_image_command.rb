@@ -9,9 +9,9 @@ class Create_Image_Command
 
   def execute(bitmap)
     (1..@number_of_rows).each do |i|
-      row = ""
+      row = ''
       (1..@row_length).each do
-        row += "O"
+        row += 'O'
       end
       bitmap[i-1] = row
     end

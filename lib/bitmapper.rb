@@ -5,7 +5,7 @@ class Bitmapper
   end
 
   def bitmap(file_name)
-    file = File.open(file_name, "r")
+    file = File.open(file_name, 'r')
     input = file.read
     commands = @input_parser.parse(input)
     build_bitmap(commands[0].execute(Array.new), commands[1..-1])
