@@ -1,4 +1,4 @@
-class Vertical_Segment_Command
+class Vertical_Segment_Command < Command
 
   attr_reader :column, :first_row, :last_row, :colour
 

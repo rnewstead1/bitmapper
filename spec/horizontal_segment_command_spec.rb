@@ -6,4 +6,7 @@ describe 'horizontal_segment_command' do
             .execute(['OOOOO', 'OOOOO', 'OOOOO', 'OOOOO', 'OOOOO']).should eql ['OOOOO', 'OOZZO', 'OOOOO', 'OOOOO', 'OOOOO']
   end
 
+  it 'should be a Command' do
+    Horizontal_Segment_Command.new(1, 1, 1, 'A').should be_a Command
+  end
 end

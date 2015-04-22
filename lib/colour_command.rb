@@ -1,4 +1,4 @@
-class Colour_Command
+class Colour_Command < Command
 
   attr_reader :x, :y, :colour
 

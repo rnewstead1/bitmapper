@@ -1,4 +1,4 @@
-class Horizontal_Segment_Command
+class Horizontal_Segment_Command < Command
 
   attr_reader :row, :first_column, :last_column, :colour
 

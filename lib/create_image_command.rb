@@ -1,4 +1,4 @@
-class Create_Image_Command
+class Create_Image_Command < Command
 
   attr_reader :row_length, :number_of_rows
 

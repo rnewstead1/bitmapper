@@ -9,7 +9,9 @@
 
 Run the specs with `rake`
 
-`bitmapper.rb` parses an input file and will print output to the console.
+`Bitmapper` accepts an input file and will print output to the console. It uses `Input_Parser` to parse the input, which creates a list of `Command`s. Each `Command` has an `execute` method that takes a bitmap. 
+Each `Command` returns a copy of the bitmap with any specific updates it needs. `Bitmapper` then goes through the list of `Command`s and executes them, with the bitmap returned from the previous `Command`. 
+ 
     
 ## Features
 - `I M N` - Create a new M x N image with all pixels coloured white (O).

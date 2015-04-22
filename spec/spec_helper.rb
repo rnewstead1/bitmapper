@@ -1,5 +1,6 @@
 require 'bitmapper'
 require 'input_parser'
+require 'command'
 require 'create_image_command'
 require 'clear_command'
 require 'colour_command'

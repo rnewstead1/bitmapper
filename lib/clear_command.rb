@@ -1,4 +1,4 @@
-class Clear_Command
+class Clear_Command < Command
   def execute(bitmap)
     new_bitmap = bitmap.dup
     new_bitmap.map! { |row|

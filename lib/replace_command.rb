@@ -1,4 +1,4 @@
-class Replace_Command
+class Replace_Command < Command
   def initialize(old_colour, new_colour)
     @old_colour = old_colour
     @new_colour = new_colour

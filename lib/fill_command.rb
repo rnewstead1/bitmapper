@@ -1,4 +1,4 @@
-class Fill_Command
+class Fill_Command < Command
 
   attr_reader :x, :y, :colour
 
