@@ -8,14 +8,15 @@ class Create_Image_Command
   end
 
   def execute(bitmap)
+    new_bitmap = bitmap.dup
     (1..@number_of_rows).each do |i|
       row = ''
       (1..@row_length).each do
         row += 'O'
       end
-      bitmap[i-1] = row
+      new_bitmap[i-1] = row
     end
-    bitmap
+    new_bitmap
   end
 
 end

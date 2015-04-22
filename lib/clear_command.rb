@@ -1,12 +1,13 @@
 class Clear_Command
   def execute(bitmap)
-    bitmap.map! { |row|
+    new_bitmap = bitmap.dup
+    new_bitmap.map! { |row|
       row1 = ''
       (1..row.length).each do
         row1 += 'O'
       end
       row1
     }
-    bitmap
+    new_bitmap
   end
 end

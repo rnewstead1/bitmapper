@@ -9,9 +9,10 @@ class Fill_Command
   end
 
   def execute(bitmap)
-    initial_colour = bitmap[@y-1][@x-1]
-    inner(bitmap, @x, @y, @colour, initial_colour)
-    bitmap
+    new_bitmap = bitmap.dup
+    initial_colour = new_bitmap[@y-1][@x-1]
+    inner(new_bitmap, @x, @y, @colour, initial_colour)
+    new_bitmap
   end
 
   private

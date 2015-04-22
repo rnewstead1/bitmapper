@@ -5,10 +5,11 @@ class Replace_Command
   end
 
   def execute(bitmap)
-    bitmap.each_with_index { |row, index|
+    new_bitmap = bitmap.dup
+    new_bitmap.each_with_index { |row, index|
       updated = row.gsub(@old_colour, @new_colour)
-      bitmap[index] = updated
+      new_bitmap[index] = updated
     }
-    bitmap
+    new_bitmap
   end
 end

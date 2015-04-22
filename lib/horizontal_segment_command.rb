@@ -10,11 +10,12 @@ class Horizontal_Segment_Command
   end
 
   def execute(bitmap)
+    new_bitmap = bitmap.dup
     (@first_column..@last_column).each do |i|
-      row = bitmap[@row-1]
+      row = new_bitmap[@row-1]
       row[i-1] = @colour
     end
-    bitmap
+    new_bitmap
   end
 
 end

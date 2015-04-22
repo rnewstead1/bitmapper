@@ -9,9 +9,10 @@ class Colour_Command
   end
 
   def execute(bitmap)
-    row = bitmap[@y-1]
+    new_bitmap = bitmap.dup
+    row = new_bitmap[@y-1]
     row[@x-1] = @colour
-    bitmap
+    new_bitmap
   end
 
 end
