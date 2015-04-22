@@ -8,7 +8,9 @@ class Bitmapper
     file = File.open(file_name, 'r')
     input = file.read
     commands = @input_parser.parse(input)
-    build_bitmap(commands[0].execute(Array.new), commands[1..-1])
+    initial_bitmap = commands[0].execute(Array.new)
+    commands.shift
+    build_bitmap(initial_bitmap, commands)
   end
 
   private
