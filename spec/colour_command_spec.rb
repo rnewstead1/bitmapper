@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'colour_command'
 
 describe 'colour_command' do
   it 'should colour pixel (X, Y) with colour A' do

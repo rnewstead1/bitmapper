@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'horizontal_segment_command'
 
 describe 'horizontal_segment_command' do
   it 'should create a horizontal segment of colour B in row Y between columns X1 and X2 inclusive' do

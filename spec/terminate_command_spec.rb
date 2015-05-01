@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'terminate_command'
 
 describe 'terminate_command' do
   it 'should terminate the session' do

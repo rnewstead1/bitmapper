@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'create_image_command'
 
 describe 'create_image_command' do
   it 'should create a 1 x 1 pixel image with all pixels coloured white' do

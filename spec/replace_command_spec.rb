@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'replace_command'
 
 describe 'replace_command' do
   it 'should replace all pixels of colour A to colour B' do

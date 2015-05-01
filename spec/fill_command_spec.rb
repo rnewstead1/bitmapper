@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'fill_command'
 
 describe 'fill_command' do
   it 'should fill region R with colour C' do

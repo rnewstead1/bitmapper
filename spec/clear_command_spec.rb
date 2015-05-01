@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'clear_command'
 
 describe 'clear_command' do
   it 'should clear all pixels to white' do

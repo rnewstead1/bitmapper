@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'show_command'
 
 describe 'show_command' do
   it 'should show the contents of the current image' do

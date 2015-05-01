@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'command'
+require 'vertical_segment_command'
 
 describe 'vertical_segment_command' do
   it 'should create a vertical segment of colour A in column X between rows Y1 and Y2 inclusive' do
