@@ -11,13 +11,30 @@ require 'show_command'
 
 describe 'bitmapper' do
   it 'should chain two commands' do
-    out = capture_io { Bitmapper.new.bitmap('fixtures/simple-bitmap.txt')}.join ''
-    out.should eql "OO\nOO\nOO\n"
+    out = capture_io { Bitmapper.new.bitmap('fixtures/simple-bitmap.txt') }.join ''
+    out.should eql <<EXPECTED
+OO
+OO
+OO
+EXPECTED
   end
 
   it 'should chain many commands' do
-    out = capture_io { Bitmapper.new.bitmap('fixtures/complex-bitmap.txt')}.join ''
-    out.should eql "OOOOO\nOOOOO\nOAOOO\nOOOOO\nOOOOO\nOOOOO\nJJJJJ\nJJZZJ\nJWJJJ\nJWJJJ\nJJJJJ\nJJJJJ\n"
+    out = capture_io { Bitmapper.new.bitmap('fixtures/complex-bitmap.txt') }.join ''
+    out.should eql <<EXPECTED
+OOOOO
+OOOOO
+OAOOO
+OOOOO
+OOOOO
+OOOOO
+JJJJJ
+JJZZJ
+JWJJJ
+JWJJJ
+JJJJJ
+JJJJJ
+EXPECTED
   end
 
 end
